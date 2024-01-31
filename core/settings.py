@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Nome do app, sempre que for criado um novo app, deve ser incluído nesta lista.
     'contato',
 ]
 
@@ -55,7 +56,11 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # Da mesma forma que nos arquivos estaticos, precisamos para ao Django o diretório dos templates globais que serão usado
+        # para setores padrões do projeto
+        'DIRS': [
+            BASE_DIR / 'templates_globais'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,6 +122,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# Para o Django identificar os arquivos estaticos do projeto, criamos um novo diretório com o caminho da pasta dos arquivos
+STATICFILES_DIRS = (
+    BASE_DIR / 'static_globais',
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
