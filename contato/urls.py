@@ -1,5 +1,5 @@
 from django.urls import path
-from contato.views import index
+from contato.views import index, descricao
 
 app_name = 'contato'
 
@@ -7,4 +7,5 @@ app_name = 'contato'
 # servidor.
 urlpatterns = [
     path('', index, name='index'),
+    path('<int:contato_id>/', descricao, name='descricao'),
 ]

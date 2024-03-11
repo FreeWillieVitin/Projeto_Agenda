@@ -6,7 +6,8 @@ from contato.models import Contato, Categoria
 @admin.register(Contato)
 class AdminContato(admin.ModelAdmin):
     # Campos que seão mostrados no admin do django
-    list_display = ['id', 'f_name', 'l_name', 'telefone', 'cod_categ']
+    list_display = ['id', 'f_name', 'l_name',
+                    'telefone', 'cod_categ', 'mostra']
     # Ordena em ordem crescente, se colocar um sinal - na frente do campo no caso o id será decrescente, essas variavéis tem que
     # tem o nome exatamente como está sendo mostrado caso contrário o DJango não reconhece
     ordering = ['id',]
@@ -17,7 +18,7 @@ class AdminContato(admin.ModelAdmin):
     # Quantidade máxima de registros necessários para utilizar a função mostrar todos os registros
     list_max_show_all = 200
     # Define quais campos podem ser editados na aréa de mostra de registros
-    list_editable = ['f_name', 'l_name',]
+    list_editable = ['f_name', 'l_name', 'mostra']
     # Define uma coluna como link para ter acesso rapido a aréa de administração do registro
     list_display_links = ['id',]
 

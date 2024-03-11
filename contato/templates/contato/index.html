@@ -1,1 +1,46 @@
 {% extends "global/base.html" %} {% comment %}integra o arquivo html ao arquivo base onde está a estrurura{% endcomment %}
+
+{% block content %} {% comment %} Dentro desse bloco vai tudo o que será trabalhado dentro da tag main{% endcomment %}
+  <div class="responsive-table"> <!--Uma div que carregará uma tabela-->
+    <table class="contacts-table"> <!--Tag tabela-->
+      <caption class="table-caption"> <!--Seria algo como o título da tabela-->
+        Contatos
+      </caption>
+      <thead> <!--Tag que indica que vai ter um cabeçalho na tabela-->
+        <tr class="table-row table-row-header"> <!--Linha onde estarão as colunas cabeçalho-->
+          <th class="table-header">ID</th> <!--Cada coluna do cabeçalho-->
+          <th class="table-header">Primeiro Nome</th>
+          <th class="table-header">Último Nome</th>
+          <th class="table-header">Telefone</th>
+          <th class="table-header">E-mail</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for contato in contatos %} <!--Faz um for na tabela de contatos iterando todos os registros da tabela-->
+          <tr class="table-row"> <!--Linhas das tabela-->
+            <td class="table-cel"> <!--Tag td é onde os dados serão exibidos cada uma refere-se ao tipo de dado da coluna-->
+              <a href="#" class="table-link">
+                {{contato.id}} <!--Os dados de cada coluna-->
+              </a>
+            </td>
+            <td class="table-cel">
+              {{contato.f_name}}
+            </td>
+            <td class="table-cel">
+              {{contato.l_name}}
+            </td>
+            <td class="table-cel">
+              {{contato.telefone}}
+            </td>
+            <td class="table-cel">
+              {{contato.email}}
+            </td>
+          </tr>
+        {% endfor %} <!--Termina a iteração-->
+      </tbody>
+    </table>
+  </div>
+{% endblock content %}
+
+
