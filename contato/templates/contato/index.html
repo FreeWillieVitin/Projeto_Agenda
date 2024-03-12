@@ -20,7 +20,7 @@
         {% for contato in contatos %} <!--Faz um for na tabela de contatos iterando todos os registros da tabela-->
           <tr class="table-row"> <!--Linhas das tabela-->
             <td class="table-cel"> <!--Tag td é onde os dados serão exibidos cada uma refere-se ao tipo de dado da coluna-->
-              <a href="#" class="table-link">
+              <a href="{% url 'contato:descricao' contato.id %}" class="table-link">
                 {{contato.id}} <!--Os dados de cada coluna-->
               </a>
             </td>

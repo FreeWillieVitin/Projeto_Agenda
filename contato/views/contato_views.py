@@ -25,17 +25,16 @@ def index(request):
     )
 
 
-def descricao(request, contato_id):
-    desc_contato = Contato.objects.get(
-        id=contato_id)  # .get busca um único valor
-    # print(contatos.query)
+def descricao(request, contact_id):
+    desc = Contato.objects.get(
+        id=contact_id)  # .get busca um único valor
 
-    contexto2 = {
-        'descricao': desc_contato,
+    contexto1 = {
+        'desc': desc,
     }
 
     return render(
         request,
         'contato/desc_contato.html',
-        contexto2,
+        contexto1,
     )

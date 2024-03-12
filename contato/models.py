@@ -20,8 +20,8 @@ class Categoria(models.Model):
 
     desc_categ = models.CharField(max_length=50)
 
-    def __str__(self) -> str:
-        return f'{self.desc_categ}'
+    # def __str__(self) -> str:
+    #     return 'ABC'
 
 
 class Contato(models.Model):

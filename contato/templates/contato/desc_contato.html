@@ -3,7 +3,14 @@
 {% block content %}
   <div class="single-contact">
     <h1 class="single-contact-name">
-      {{contato.f_name}} {{contato.l_name}}
+      {{ desc.f_name }} {{ desc.l_name }}
     </h1>
+
+    <p><b>ID:</b> {{desc.id}}</p>
+    <p><b>E-mail:</b> {{desc.email}}</p>
+    <p><b>Fone:</b> {{desc.telefone}}</p>
+    <p><b>Data de Cadastro:</b> {{desc.data_contato}}</p>
+    <p><b>Descrição:</b> {{desc.descricao}}</p>
+    <p><b>Categoria:</b> {{desc.cod_categ.desc_categ}}</p>
   </div>
 {% endblock content %}
