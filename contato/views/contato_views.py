@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from contato.models import Contato
 
 # Create your views here.
@@ -16,6 +16,7 @@ def index(request):
 
     contexto = {
         'contatos': contatos,
+        'nome_contato': 'Contato - '
     }
 
     return render(
@@ -26,11 +27,17 @@ def index(request):
 
 
 def descricao(request, contact_id):
-    desc = Contato.objects.get(
-        id=contact_id)  # .get busca um único valor
+    # desc = Contato.objects.get(
+    #     id=contact_id)  # .get busca um único valor
+
+    # Função pronta para checar se algo existe, caso contrário levanta uma exceção
+    desc = get_object_or_404(Contato.objects, id=contact_id, mostra=True)
+
+    nome = f'{desc.f_name} - '
 
     contexto1 = {
         'desc': desc,
+        'nome_contato': nome
     }
 
     return render(
