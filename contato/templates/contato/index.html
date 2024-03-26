@@ -1,20 +1,21 @@
 {% extends "global/base.html" %} {% comment %}integra o arquivo html ao arquivo base onde está a estrurura{% endcomment %}
 
 {% block content %} {% comment %} Dentro desse bloco vai tudo o que será trabalhado dentro da tag main{% endcomment %}
-  <div class="responsive-table"> <!--Uma div que carregará uma tabela-->
-    <table class="contacts-table"> <!--Tag tabela-->
-      <caption class="table-caption"> <!--Seria algo como o título da tabela-->
-        Contatos
-      </caption>
-      <thead> <!--Tag que indica que vai ter um cabeçalho na tabela-->
-        <tr class="table-row table-row-header"> <!--Linha onde estarão as colunas cabeçalho-->
-          <th class="table-header">ID</th> <!--Cada coluna do cabeçalho-->
-          <th class="table-header">Primeiro Nome</th>
-          <th class="table-header">Último Nome</th>
-          <th class="table-header">Telefone</th>
-          <th class="table-header">E-mail</th>
-        </tr>
-      </thead>
+  {% if contatos %}
+    <div class="responsive-table"> <!--Uma div que carregará uma tabela-->
+      <table class="contacts-table"> <!--Tag tabela-->
+        <caption class="table-caption"> <!--Seria algo como o título da tabela-->
+          Contatos
+        </caption>
+        <thead> <!--Tag que indica que vai ter um cabeçalho na tabela-->
+          <tr class="table-row table-row-header"> <!--Linha onde estarão as colunas cabeçalho-->
+            <th class="table-header">ID</th> <!--Cada coluna do cabeçalho-->
+            <th class="table-header">Primeiro Nome</th>
+            <th class="table-header">Último Nome</th>
+            <th class="table-header">Telefone</th>
+            <th class="table-header">E-mail</th>
+          </tr>
+        </thead>
 
       <tbody>
         {% for contato in contatos %} <!--Faz um for na tabela de contatos iterando todos os registros da tabela-->
@@ -43,6 +44,13 @@
       </tbody>
     </table>
   </div>
+  {% else %}
+    <div class="single-contact">
+      <h1 class="single-contact-name">
+        Nenhum Contato Encontrado
+      </h1>
+    </div>
+  {% endif %}
 {% endblock content %}
 
 
