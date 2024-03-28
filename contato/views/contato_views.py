@@ -1,3 +1,5 @@
+# Documentação para classe do Django paginação: https://docs.djangoproject.com/en/4.2/topics/pagination/
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from contato.models import Contato
 from django.db.models import Q
@@ -12,11 +14,15 @@ def index(request):
     contatos = Contato.objects\
         .filter(mostra=True)\
         .order_by('-id')
+    # Paginator é uma classe do Django que permite como o nome diz, criar paginação em busca de dados organizando melhor as infos
+    paginacao = Paginator(contatos, 10)
 
+    page_number = request.GET.get("page")
+    page_obj = paginacao.get_page(page_number)
     # print(contatos.query)
 
     contexto = {
-        'contatos': contatos,
+        'contatos': page_obj,
         'nome_contato': 'Search - '
     }
 
@@ -52,10 +58,15 @@ def search(request):
         )\
         .order_by('-id')
 
+    paginacao = Paginator(contatos, 10)
+
+    page_number = request.GET.get("page")
+    page_obj = paginacao.get_page(page_number)
+
     # print(contatos.query)
 
     contexto = {
-        'contatos': contatos,
+        'contatos': page_obj,
         'nome_contato': 'Contato - ',
         'valor_busca': valor_busca
     }
