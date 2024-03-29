@@ -14,19 +14,20 @@ class Categoria(models.Model):
     # Vídeo sobre traduções Django: https://www.youtube.com/watch?v=iIsLwz_vkzA
     # Documentação da classe Meta Django: https://docs.djangoproject.com/pt-br/4.2/ref/models/options/
     #
-    # class Meta:
-    #     verbose_name = 'Categoria'
-    #     verbose_name_plural = 'Varias'
+    class Meta:
+        verbose_name = 'Categoria'
+        verbose_name_plural = 'Varias'
 
     desc_categ = models.CharField(max_length=50)
 
-    # def __str__(self) -> str:
-    #     return 'ABC'
+    def __str__(self) -> str:
+        return self.desc_categ
 
 
 class Contato(models.Model):
     f_name = models.CharField(max_length=100)
-    l_name = models.CharField(max_length=50, blank=True)
+    l_name = models.CharField(
+        max_length=50, blank=True, verbose_name='Sobrenome')
     telefone = models.CharField(max_length=30)
     email = models.EmailField(max_length=254, blank=True)
     data_contato = models.DateTimeField(default=timezone.now)
